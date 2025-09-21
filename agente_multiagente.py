@@ -1,3 +1,4 @@
+#importação das bibliotecas
 from langchain_google_genai import ChatGoogleGenerativeAI
 from  crewai import Agent, Task, Crew, Process, LLM
 
@@ -9,6 +10,12 @@ llm = LLM(model='gemini/gemini-2.0-flash-lite', verbose=True,
           temperature=0.4, api_key=os.environ["GOOGLE_API"])
 
 print("Feito!")
+
+
+# TEMA 
+#O tema desses agentes é a Análise de Dados de TI, com foco específico em automação do monitoramento de servidores web.A missão da equipe é criar e atuar na infraestrutura, 
+# realizar a tarefa de verificar os logs de acesso de um servidor para garantir que tudo está funcionando bem.
+
 
 analista_sintatico = Agent(
     role = "Parser de Logs de Servidor",
@@ -40,7 +47,7 @@ tarefa_criacao = Task (
 )
 
 tarefa_analisarDados = Task(
-    description = "Usar a ferramenta de execução de código para criar e executar um script Python com a biblioteca pandas que carregue os dados do arquivo criado que identifique as 10 URLs mais acessadas," \
+    description = "Usar a ferramenta de execução de código para criar e executar um script Python com a biblioteca pandas que carregue os dados do arquivo criado que identifique as 10 URLs mais acessadas do site," \
     "quantidade de erros, o IP que mais fez requisições e faça um print resumindo todas essas descobertas",
     expected_output = "Uma string de texto (print) contendo o resumo da análise: Top 10 URLs, contagem de erros e o IP mais frequente.",
     agent = analista_dados    
