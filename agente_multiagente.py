@@ -4,8 +4,10 @@ from  crewai import Agent, Task, Crew, Process, LLM
 
 import os 
 
+# Definição da minha chave API
 os.environ["GOOGLE_API"] = "AIzaSyDETmL7bYigOUfKwTHMi7uCIliSi1cq3Xc"
 
+# Definição do Gemini Flash
 llm = LLM(model='gemini/gemini-2.0-flash-lite', verbose=True, 
           temperature=0.4, api_key=os.environ["GOOGLE_API"])
 
