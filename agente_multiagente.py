@@ -4,7 +4,7 @@ from  crewai import Agent, Task, Crew, Process, LLM
 
 import os 
 
-os.environ["GOOGLE_API"] = "AIzaSyDTDxpV3-k-UE1cOT1dvRTyI4EIdQDy9Tg"
+os.environ["GOOGLE_API"] = "AIzaSyDETmL7bYigOUfKwTHMi7uCIliSi1cq3Xc"
 
 llm = LLM(model='gemini/gemini-2.0-flash-lite', verbose=True, 
           temperature=0.4, api_key=os.environ["GOOGLE_API"])
@@ -14,7 +14,8 @@ print("Feito!")
 
 # TEMA 
 #O tema desses agentes é a Análise de Dados de TI, com foco específico em automação do monitoramento de servidores web.A missão da equipe é criar e atuar na infraestrutura, 
-# realizar a tarefa de verificar os logs de acesso de um servidor para garantir que tudo está funcionando bem.
+#realizar a tarefa de verificar os logs de acesso de um servidor para garantir que tudo está funcionando bem, assim como, gerar um relátorio que identifique as 10 URLs mais acessadas do site,
+#quantidade de erros, o IP que mais fez requisições.
 
 # Definir os AGENTES
 analista_sintatico = Agent(
