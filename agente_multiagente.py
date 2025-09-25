@@ -16,7 +16,7 @@ print("Feito!")
 #O tema desses agentes é a Análise de Dados de TI, com foco específico em automação do monitoramento de servidores web.A missão da equipe é criar e atuar na infraestrutura, 
 # realizar a tarefa de verificar os logs de acesso de um servidor para garantir que tudo está funcionando bem.
 
-
+# Definir os AGENTES
 analista_sintatico = Agent(
     role = "Parser de Logs de Servidor",
     goal = "Ler o conteúdo bruto de arquivos de log e convertê-lo em um formato estruturado (como CSV) usando código Python",
@@ -40,6 +40,8 @@ analista_relatorios = Agent(
     llm = llm
 )
 
+
+# Definir cada tarefa para cada agente
 tarefa_criacao = Task (
     description ="Ler o arquivo de log 'access.log' usando a ferramenta de leitura de arquivo, criar e executar um script Python que extraia: Ip, data, método, URL e status.",
     expected_output = "Mensagem de confirmação de que o arquivo 'parsed_log.csv' foi criado com sucesso.",
@@ -64,6 +66,8 @@ tarefa_gerarRelatorios = Task(
     agent = analista_relatorios 
 )
 
+
+# Montagem e execução da equipe (Usando o CREW)
 crew = Crew(
     agents = [analista_sintatico, analista_dados, analista_relatorios],
     tasks = [tarefa_criacao, tarefa_analisarDados, tarefa_gerarRelatorios],
@@ -72,5 +76,7 @@ crew = Crew(
     llm = llm
 )
 
+
+# Imprimindo o resultado da equipe
 resultado = crew.kickoff()
 print(resultado)
